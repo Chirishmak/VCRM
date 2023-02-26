@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView,TextInput } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
+import NotificationController from '../NotificationController.android';
 
 
 
@@ -129,7 +130,9 @@ const NewCustomer = () => {
                 autoCorrect={false}
                 // secureTextEntry={true}
             />
-            <TouchableOpacity style={styles.regsbtn} onPress={() => { AddCustomer(email,name, phonenumber,anumber,product,address,vendor); navigation.navigate("VendorLanding") }}>
+            <TouchableOpacity style={styles.regsbtn} onPress={() => { AddCustomer(email,name, phonenumber,anumber,product,address,vendor);  NotificationController; navigation.navigate("VendorLanding");  }}>
+            {/* <TouchableOpacity style={styles.regsbtn} onPress={() => { NotificationController();   }}> */}
+
                 <Text style={styles.register}>Submit</Text>
             </TouchableOpacity>
             </View>

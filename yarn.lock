@@ -2121,7 +2121,14 @@
   "resolved" "https://registry.npmjs.org/@react-native-community/eslint-plugin/-/eslint-plugin-1.3.0.tgz"
   "version" "1.3.0"
 
-"@react-native-firebase/app@^16.5.2", "@react-native-firebase/app@16.5.2":
+"@react-native-community/push-notification-ios@^1.10.1":
+  "integrity" "sha512-k6bZWUKLif4GjenyTD3aQLwA2VT3bNmt22INO/34lexnpmqkPDZF7nreqbckTHG0Zso9wDTe4N/AZJUC/d8iRg=="
+  "resolved" "https://registry.npmjs.org/@react-native-community/push-notification-ios/-/push-notification-ios-1.10.1.tgz"
+  "version" "1.10.1"
+  dependencies:
+    "invariant" "^2.2.4"
+
+"@react-native-firebase/app@^16.5.2", "@react-native-firebase/app@16.5.2", "@react-native-firebase/app@17.3.0":
   "integrity" "sha512-BKRFadp/oEu8y4jBvO7/+9bQjEoYJv/7tgZWXG2Pt+qiQLvL7PJCnWjN+OzBE8Vcfy7pAXQYQZ9vrDvm4evyOQ=="
   "resolved" "https://registry.npmjs.org/@react-native-firebase/app/-/app-16.5.2.tgz"
   "version" "16.5.2"
@@ -2142,6 +2149,11 @@
   "integrity" "sha512-BU0OsYBUthCliJKcXQyXCShqlwYSWV2EQUI2dXodE2EVkWYUCYfPCz9fnGMHAsJCVbK4p8XmCgGzh4vlBM8upQ=="
   "resolved" "https://registry.npmjs.org/@react-native-firebase/firestore/-/firestore-16.5.2.tgz"
   "version" "16.5.2"
+
+"@react-native-firebase/messaging@^17.3.0":
+  "integrity" "sha512-A1NNrU5KrztJLym5p+VNIbU3pLOSHW9DpJdXyIBR/n/5nZBLL/zLsMoDs8dvfaeyBPiWuvVQbloOKfd5mTvmOw=="
+  "resolved" "https://registry.npmjs.org/@react-native-firebase/messaging/-/messaging-17.3.0.tgz"
+  "version" "17.3.0"
 
 "@react-native/assets@1.0.0":
   "integrity" "sha512-KrwSpS1tKI70wuKl68DwJZYEvXktDHdZMG0k2AXD/rJVSlB23/X2CB2cutVR0HwNMJIal9HOUOBB2rVfa6UGtQ=="
@@ -6633,6 +6645,11 @@
   "resolved" "https://registry.npmjs.org/react-native-gradle-plugin/-/react-native-gradle-plugin-0.0.7.tgz"
   "version" "0.0.7"
 
+"react-native-push-notification@^8.1.1":
+  "integrity" "sha512-XpBtG/w+a6WXTxu6l1dNYyTiHnbgnvjoc3KxPTxYkaIABRmvuJZkFxqruyGvfCw7ELAlZEAJO+dthdTabCe1XA=="
+  "resolved" "https://registry.npmjs.org/react-native-push-notification/-/react-native-push-notification-8.1.1.tgz"
+  "version" "8.1.1"
+
 "react-native-safe-area-context@^4.5.0", "react-native-safe-area-context@>= 3.0.0":
   "integrity" "sha512-0WORnk9SkREGUg2V7jHZbuN5x4vcxj/1B0QOcXJjdYWrzZHgLcUzYWWIUecUPJh747Mwjt/42RZDOaFn3L8kPQ=="
   "resolved" "https://registry.npmjs.org/react-native-safe-area-context/-/react-native-safe-area-context-4.5.0.tgz"
@@ -6654,7 +6671,7 @@
     "prop-types" "^15.7.2"
     "yargs" "^16.1.1"
 
-"react-native@*", "react-native@^0.69.6":
+"react-native@*", "react-native@^0.69.6", "react-native@>=0.33", "react-native@>=0.58.4":
   "integrity" "sha512-wwXpqM+12kdEYdBZCJUb5SBu95CzgejrwFeYJ78RzHZV/Sj6DBRekbsHGrDDsY4R25QXALQxy4DQYQCObVvWjA=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.69.6.tgz"
   "version" "0.69.6"
@@ -6716,7 +6733,7 @@
     "react-shallow-renderer" "^16.13.1"
     "scheduler" "^0.20.2"
 
-"react@*", "react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^18.0.0", "react@>=17.0.0", "react@17.0.2", "react@18.0.0":
+"react@*", "react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^18.0.0", "react@>=16.6.3", "react@>=17.0.0", "react@17.0.2", "react@18.0.0":
   "integrity" "sha512-x+VL6wbT4JRVPm7EGxXhZ8w8LTROaxPXOqhlGyVSrv0sB1jkyFGgXxJ8LVoPRLvPR6/CIZGFmfzqUa2NYeMr2A=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.0.0.tgz"
   "version" "18.0.0"

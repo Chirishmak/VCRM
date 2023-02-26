@@ -12,7 +12,10 @@ import VendorLanding from './src/VendorLanding';
 import Leads from './src/LeadsPage';
 import NewCustomer from './src/NewCustomer';
 import MyLeads from './src/MyLeads';
-
+import NotificationController from './NotificationController.android';
+import LeadList from './src/LeadList';
+import CustomerRequirement from './src/CustomerRequirement';
+import FollowUp from './src/FollowUp';
 
 const Stack = createStackNavigator();
 
@@ -100,7 +103,29 @@ const App=()=>{
             headerShown:true,
           }}>
         </Stack.Screen>
+        <Stack.Screen 
+          name="LeadList"
+          component={LeadList}
+          options={{
+            headerShown:true,
+          }}>
+        </Stack.Screen>
+        <Stack.Screen 
+          name="CustomerRequirement"
+          component={CustomerRequirement}
+          options={{
+            headerShown:true,
+          }}>
+        </Stack.Screen>
+        <Stack.Screen 
+          name="FollowUp"
+          component={FollowUp}
+          options={{
+            headerShown:true,
+          }}>
+        </Stack.Screen>
         </Stack.Navigator>
+       
   )
 }
 
@@ -108,6 +133,7 @@ export default () => {
   return (
     <NavigationContainer>
       <App />
+      {/* <NotificationController/> */}
     </NavigationContainer>
   )
 }

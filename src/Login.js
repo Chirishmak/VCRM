@@ -73,34 +73,55 @@
 // }
 
 import React, { useEffect,useState } from 'react';
-import { Button, TextInput,View,StyleSheet } from 'react-native';
+import { Button, TextInput,View,StyleSheet,Alert } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import firestore from "@react-native-firebase/firestore"
 import { useNavigation } from '@react-navigation/native';
+import NotificationController from '../NotificationController.android';
+import messaging from '@react-native-firebase/messaging';
 
-function Login() {
+const Login=()=> {
     // If null, no SMS has been sent
     const [confirm, setConfirm] = useState(null);
     const [phoneNumber, setPhoneNumber] = useState(null);
     const [code, setCode] = useState('');
     const [initializing, setInitializing] = useState(true);
-    const [user, setUser] = useState();
+    // const [user, setUser] = useState();
     const [authenticated, setAuthenticated] = useState(false);
     const navigation = useNavigation();
     //     // const auth = firebase.auth();
     const CompanyData = []
     const VendorData = []
 
-    function onAuthStateChanged(user) {
-        setUser(user);
-        if (initializing) setInitializing(false);
-        console.log("user",user)
-      }
+    // function onAuthStateChanged(user) {
+    //     setUser(user);
+    //     if (initializing) setInitializing(false);
+    //     console.log("user",user)
+    //   }
 
-    useEffect(() => {
-        const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-        return subscriber; // unsubscribe on unmount
-      }, []);
+    // useEffect(() => {
+    //     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    //     return subscriber; // unsubscribe on unmount
+    //   }, []);
+
+      useEffect(()=>{
+        messaging().setBackgroundMessageHandler(async(remoteMessage)=>{
+          console.log("Message handled in the background!!",remoteMessage)
+        });
+
+        const unsubscribe = messaging().onMessage(async(remoteMessage)=>{
+          console.log("remoteMessage",remoteMessage);
+        });
+        return unsubscribe;
+      },[])
+
+      const checkToken = async()=>{
+        const fcmToken = await messaging().getToken();
+        if (fcmToken){
+          console.log("token",fcmToken);
+          // Alert.alert(fcmToken);
+        }
+      }
 
     // Handle the button press
     async function signIn(phoneNumber) {
@@ -153,13 +174,13 @@ function Login() {
           console.log('Invalid code.');
         }
       }
-    //   auth().onAuthStateChanged((user) => {
-    //             if (user) {
-    //                 setAuthenticated(true);
-    //             } else {
-    //                 setAuthenticated(false);
-    //             }
-    //         })
+      auth().onAuthStateChanged((user) => {
+                if (user) {
+                    setAuthenticated(true);
+                } else {
+                    setAuthenticated(false);
+                }
+            })
 
     if (!confirm) {
         return (
@@ -184,7 +205,7 @@ function Login() {
     return (
         <View style={{justifyContent:'center',alignItems:'center'}}>
             <TextInput style={styles.input} placeholder='OTP' value={code} onChangeText={setCode} />
-            <Button title="Submit OTP" onPress={() => {confirmCode();
+            <Button title="Submit OTP" onPress={() => {confirmCode(); checkToken();
             if(phoneNumber=='+919619985663' )
              navigation.navigate("CompanyLanding",phoneNumber)
              else{
@@ -192,9 +213,9 @@ function Login() {
 
              }
              
-             }}
+            
              
-             
+            }}
               />
         </View>
     );
