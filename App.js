@@ -16,6 +16,7 @@ import NotificationController from './NotificationController.android';
 import LeadList from './src/LeadList';
 import CustomerRequirement from './src/CustomerRequirement';
 import FollowUp from './src/FollowUp';
+import VendorList from './src/VendorList';
 
 const Stack = createStackNavigator();
 
@@ -120,6 +121,13 @@ const App=()=>{
         <Stack.Screen 
           name="FollowUp"
           component={FollowUp}
+          options={{
+            headerShown:true,
+          }}>
+        </Stack.Screen>
+        <Stack.Screen 
+          name="VendorList"
+          component={VendorList}
           options={{
             headerShown:true,
           }}>

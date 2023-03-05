@@ -23,9 +23,10 @@ const NewCustomer = () => {
     const [phonenumber, setPhonenumber] = useState("");
     const [anumber, setAnumber] = useState("");
     const [address, setAddress] = useState("");
-
+    const [customer,setCustomer] = useState([]);
     const mobile_number = `+91${phonenumber}`
     const navigation = useNavigation();
+    const CustomerData = []
 
     // const vendor=vname
    
@@ -76,6 +77,28 @@ const NewCustomer = () => {
             // })
     }
 
+    // const notify = () => {
+    //     firestore().
+    //     collection('Customers').
+    //     get()
+    //     .then(querySnapshot => {
+    //         console.log('Total Customer: ', querySnapshot.size);
+
+
+    //         //    querySnapshot.forEach(documentSnapshot => {
+    //         //     console.log('User ID: ', documentSnapshot.id, documentSnapshot.data());
+    //         //   });
+    //         querySnapshot.forEach((doc) => CustomerData.push({ ...doc.data(),id :doc.id}))
+    //         console.log("CustomerData", CustomerData)
+    //         // setCustomer(CustomerData);
+    //         const filtering = CustomerData?.filter((user)=>user.product === prod)
+    //         console.log("Filtering", filtering);
+    //         setCustomer(filtering)
+
+    //     });
+    // return
+    
+    // }
 
 
 

@@ -3,7 +3,7 @@ import React, { Component, useEffect, useState } from 'react';
 import { View, TouchableOpacity, TextInput, StyleSheet, Text, Alert, ScrollView } from 'react-native';
 import {Dropdown} from 'react-native-material-dropdown';
 import auth from '@react-native-firebase/auth';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation,useRoute } from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
 // import {firebase} from "../config";
 
@@ -15,13 +15,39 @@ const Register = () => {
     const [email, setEmail] = useState("");
     // const [password, setPassword] = useState("");
     const [phonenumber, setPhonenumber] = useState("");
+    const [company, setCompany] = useState(CData);
     const mobile_number = `+91${phonenumber}`
     const navigation = useNavigation();
+    const CData = []
+    const route = useRoute();
+    const compn = route.params
+    const Comp_n=compn;
 
+    console.log("comp_n",Comp_n);
+
+    useEffect(()=>{
+        // getCdata();
+    },[])
+    
+
+    // const getCdata = firestore().
+    // collection("Companies")
+    // .get()
+    // .then(querySnapshot => {
+    //     console.log('Total Company: ', querySnapshot.size);
+
+    //     querySnapshot.forEach((doc) => CData.push({ ...doc.data(), id: doc.id }))
+    //     console.log("CompanyData", CData)
+    //     setCompany(CData)
+    //             // console.log('User ID: ', doc.id, doc.data());
+    //     // const filtering = CompanyData?.filter((user) => user.id === phoneNumber)
+    //     // console.log("FilteringC", filtering);
+    // }
+    // )
 
 
     const registerUSer = async (email, password) => {
-        await auth().createUserWithEmailAndPassword(email, password, firstname, lastname, phonenumber)
+        await auth().createUserWithEmailAndPassword(email, password, firstname, lastname, phonenumber,company)
             .then(() => {
                 auth().currentUser.sendEmailVerification({
                     // auth().currentUser.sendEmailVerification({
@@ -45,7 +71,9 @@ const Register = () => {
                                 firstname,
                                 lastname,
                                 email,
-                                mobile_number
+                                mobile_number,
+                                Comp_n,
+
 
                             })
                             .catch((error) => {

@@ -136,13 +136,13 @@ const Login=()=> {
                     console.log("CompanyData", CompanyData)
                     // console.log('User ID: ', doc.id, doc.data());
                     const filtering = CompanyData?.filter((user) => user.id === phoneNumber)
-                    console.log("Filtering", filtering);
+                    console.log("FilteringC", filtering);
                     if (filtering[0]?.id === phoneNumber) {
                         // console.log("....")
                         const confirmation = auth().signInWithPhoneNumber(phoneNumber);
                         setConfirm(confirmation);
                     }
-                    else if (filtering[0]?.id !== phoneNumber) {
+                    if (filtering[0]?.id !== phoneNumber) {
                       firestore()
                       .collection('vendor_registered')
                       .get()
@@ -152,13 +152,21 @@ const Login=()=> {
                           querySnapshot.forEach((doc) => VendorData.push({ ...doc.data(), id: doc.id }))
                           console.log("VendorData", VendorData)
                           // console.log('User ID: ', doc.id, doc.data());
-                          const filtering = CompanyData?.filter((user) => user.id === phoneNumber)
-                          console.log("Filtering", filtering);
+                          const filteringv = VendorData?.filter((user) => user.id === phoneNumber)
+                          console.log("FilteringV", filteringv);
+                          if(filteringv[0]?.id === phoneNumber){
                           const confirmation = auth().signInWithPhoneNumber(phoneNumber);
-                        setConfirm(confirmation);
-                     
+                        setConfirm(confirmation)}
+                        else if(filteringv[0]?.id !== phoneNumber){
+                          alert('Please get registered..')
+                        }
+                        // console.log('confirm',confirmation);
+// if(filtering[0]?.id !== phoneNumber)
+
                     }
+                   
                     )}
+                   
                 });
 
 
@@ -174,13 +182,13 @@ const Login=()=> {
           console.log('Invalid code.');
         }
       }
-      auth().onAuthStateChanged((user) => {
-                if (user) {
-                    setAuthenticated(true);
-                } else {
-                    setAuthenticated(false);
-                }
-            })
+      // auth().onAuthStateChanged((user) => {
+      //           if (user) {
+      //               setAuthenticated(true);
+      //           } else {
+      //               setAuthenticated(false);
+      //           }
+      //       })
 
     if (!confirm) {
         return (

@@ -11,7 +11,7 @@ const FollowUp = () => {
     const [product_price, setProduct_price] = useState('');
     const [product_attachments, setProduct_attachments] = useState('');
     const [comment_box, setComment_box] = useState('');
-    const [file,setFile] = useState('');
+    const [file,setFile] = useState(null);
 
 
     // const add = () => {
@@ -27,8 +27,9 @@ const FollowUp = () => {
 
     const pickfile = async() => {
         try {
-           const response = await DocumentPicker.pickSingle({
-                type: [DocumentPicker.types.pdf],
+           const response = await DocumentPicker
+           .pickSingle({
+                type: [DocumentPicker.types.allFiles],
             });
             console.log("response",response);
             setFile(response);
@@ -40,8 +41,10 @@ const FollowUp = () => {
 
     const uploadfile = async() => {
         try {
-            const response = await storage().ref(`/Product_Attachment/${file.name}`).putFile(file.uri);
-            console.log("...res",response)
+            const response1 = await storage()
+            .ref(`/Product_Attachment/${file.name}`)
+            .putFile(file.uri);
+            console.log("...res",response1)
             
         } catch (error) {
             console.log(error)
@@ -58,17 +61,18 @@ const FollowUp = () => {
                     keyboardType='numeric'
                 />
                 <View style={styles.attach}>
-                    {
-                        file ? (
-                            <Text>{file.uri}</Text>
-                        ):(
-                            <Text></Text>
-                        )
-                    }
+                   
                 <Button onPress={()=> pickfile()}
                     
                     title='Product Attachment'
                 />
+                 {
+                        file ? (
+                            <Text>{file.name}</Text>
+                        ):(
+                            <Text></Text>
+                        )
+                    }
                 </View>
                 <TextInput
                     style={styles.comment}

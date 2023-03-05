@@ -43,7 +43,10 @@ const LeadList = () =>{
         return
         } 
 
+        
+
         console.log("customer",customer)
+        // console.log("length",length);
 
         return(
             <View style={styles.container}>
